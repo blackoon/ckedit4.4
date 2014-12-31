@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="Ckedit4.4 : 对于新版本ckedit,如何赋值问题，提供方案">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Ckedit4.4</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/blackoon/ckedit4.4">View on GitHub</a>
+
+          <h1 id="project_title">Ckedit4.4</h1>
+          <h2 id="project_tagline">对于新版本ckedit,如何赋值问题，提供方案</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/blackoon/ckedit4.4/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/blackoon/ckedit4.4/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>//新增页面</p>
+
+
+
+<pre><code>    &lt;script type="text/javascript"&gt;
+    var editor = null;
+    $(function(){
+        $.ajaxSetup ({ cache: false}); 
+          editor = CKEDITOR.replace('description', {
+                uiColor: '#14B8C4',
+                toolbar: [
+                    [ 'Bold', 'Italic', '-', 'NumberedList', 'BulletedList', '-', 'Link', 'Unlink' ],
+                    [ 'FontSize', 'TextColor', 'BGColor' ]
+                ]
+            });
+</code></pre>
+
+<p>//          $("#addForm").validate({
+//              rules: {
+//                  name:{required: true,maxlength:50}
+//              }
+//          ,</p>
+
+<p>//               submitHandler: function(form) {
+//                  $.taijiAddSubmit(form,option);
+//              }
+//          });</p>
+
+<pre><code>        $("#submit").click(function(){
+</code></pre>
+
+<p>//              alert($('.cke_editable').html());
+//              alert(CKEDITOR.instances.content.document.getBody().getText());
+                //$("#addForm").trigger("submit");
+//              var  oEditor  =  new CKEDITOR.editor('description') ;
+//              alert(oEditor);
+//              alert(oEditor.getData());
+//              alert(editor.getData());
+//              alert(FCKeditorAPI.GetInstance('description').GetXHTML(true));
+                $('#description').val(editor.getData());
+                $("#treeManage").triggerHandler("taijiAddPost",[$("#addForm")]);
+            });
+            $(".close").click(function(){
+                $.nmTop().close();
+            });
+            $("#list").val("");
+        });
+
+//编辑页面
+$(function() {
+        var editor = null;
+        $.ajaxSetup({
+            cache : false
+        });
+         editor = CKEDITOR.replace('description', {
+                uiColor: '#14B8C4',
+                toolbar: [
+                    [ 'Bold', 'Italic', '-', 'NumberedList', 'BulletedList', '-', 'Link', 'Unlink' ],
+                    [ 'FontSize', 'TextColor', 'BGColor' ]
+                ]
+            });
+         editor.setData($('#description').val);
+        $("#submit").click(function() {
+//          alert( new CKEDITOR.dom.text( 'description' ).getData());
+//          alert(CKEDITOR.instances.content.document.getBody().getText());
+            $('#description').val(editor.getData());
+                    $("#treeManage").triggerHandler("taijiEditPost",[ $("#editForm") ]);
+                });
+        $(".close").click(function() {
+            $.nmTop().close();
+        });</p>
+
+<pre><code>});
+</code></pre>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Ckedit4.4 maintained by <a href="https://github.com/blackoon">blackoon</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
